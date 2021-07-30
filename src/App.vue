@@ -1,9 +1,10 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+<!--  <div id="nav">-->
+<!--    <router-link to="/">Home</router-link> |-->
+<!--    <router-link to="/about">About</router-link>-->
+<!--  </div>-->
+<!--  <router-view/>-->
+  <card />
 </template>
 
 <style lang="scss">
@@ -28,3 +29,9 @@
   }
 }
 </style>
+<script>
+import Card from "@/components/Card";
+export default {
+  components: {Card}
+}
+</script>
