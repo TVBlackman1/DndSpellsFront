@@ -3,7 +3,18 @@
     <div class="name-holder">
       {{name}}
     </div>
-    <div class="properties"></div>
+    <div class="must-have-info">
+      <div class="lvl">1</div>
+      <div class="properties">
+        <property-cast-time />
+        <property-magic-school />
+        <property-components />
+        <property-duration />
+        <property-distance />
+        <property-ritual />
+      </div>
+    </div>
+
     <div class="description">
 <!--      <pre>-->
         {{description}}
@@ -11,8 +22,6 @@
     </div>
     <div class="sources"></div>
 <!--    <property :text="magicSchool" :svg-source="magicSchoolSVG" />-->
-    <property-magic-school />
-    <property-cast-time />
   </div>
 </template>
 
@@ -21,10 +30,16 @@
 import SchoolSVG from "@/assets/svg/school_black_24dp.svg"
 import PropertyMagicSchool from "@/components/PropertyMagicSchool";
 import PropertyCastTime from "@/components/PropertyCastTime";
+import PropertyDuration from "@/components/PropertyDuration";
+import PropertyComponents from "@/components/PropertyComponents";
+import PropertyDistance from "@/components/PropertyDistance";
+import PropertyRitual from "@/components/PropertyRitual";
 
 export default {
   name: "Card",
-  components: {PropertyCastTime, PropertyMagicSchool},
+  components: {
+    PropertyRitual,
+    PropertyDistance, PropertyComponents, PropertyDuration, PropertyCastTime, PropertyMagicSchool},
   data(){
     return {
       name: "Безмолвный образ [Silent image]",
@@ -46,12 +61,14 @@ export default {
 @import "~@/css/fonts.css";
 
 .spell-card {
-  border: 1px solid steelblue;
+  //border: 1px solid steelblue;
   border-radius: 8px;
-  width: 860px;
+  width: 1100px;
   text-align: left;
-  padding: 0.4em 0.8em;
+  padding: 0.4em 0.8em 0.8em;
   background-color: #F5F5F5;
+  -webkit-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
+  box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
 
   & .name-holder {
     font-family: Montserrat-semi-bold, serif;
@@ -59,8 +76,42 @@ export default {
   }
 
   & .description {
+    margin-top: 0.8em;
     font-family: Montserrat-regular, serif;
     font-size: 18px;
+  }
+
+  & .must-have-info {
+    margin-top: 0.9em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  & .lvl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Montserrat-semi-bold, serif;
+    font-size: 24px;
+    border: 3px dashed #2c3e50;
+    padding: 0.4em;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    margin-right: 24px;
+    //transition: 0.15s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: #ec5b5b;
+    }
+  }
+
+  & .properties {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
   }
 }
 </style>

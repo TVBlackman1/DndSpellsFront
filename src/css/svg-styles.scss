@@ -1,0 +1,35 @@
+.svg-elem {
+  $size: 24px;
+  background-size: $size $size;
+  background-clip: border-box;
+  width: $size;
+  height: $size;
+  margin-right: 8px;
+  filter: invert(19%) sepia(13%) saturate(1476%) hue-rotate(169deg) brightness(98%) contrast(87%);
+  //transition: 0.01s;
+
+  &.magical-school {
+    background: url("~@/assets/svg/school_black_24dp.svg") center no-repeat;
+  }
+
+  &.cast-time {
+    background: url("~@/assets/svg/schedule_black_24dp.svg") center no-repeat;
+  }
+
+  &.duration {
+    background: url("~@/assets/svg/hourglass_top_black_24dp.svg") center no-repeat;
+  }
+
+  &.components {
+    background: url("~@/assets/svg/group_work_black_24dp.svg") center no-repeat;
+  }
+
+  &.distance {
+    background: url("~@/assets/svg/call_made_black_24dp.svg") center no-repeat;
+  }
+
+  &.ritual {
+    background: url("~@/assets/svg/adjust_black_24dp.svg") center no-repeat;
+  }
+
+}

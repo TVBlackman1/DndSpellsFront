@@ -5,6 +5,7 @@
 <!--  </div>-->
 <!--  <router-view/>-->
   <card />
+  <add-spell />
 </template>
 
 <style lang="scss">
@@ -31,7 +32,8 @@
 </style>
 <script>
 import Card from "@/components/Card";
+import AddSpell from "@/components/add-spell/AddSpell";
 export default {
-  components: {Card}
+  components: {AddSpell, Card}
 }
 </script>
