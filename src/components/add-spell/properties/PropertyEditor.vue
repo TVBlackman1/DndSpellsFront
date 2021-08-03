@@ -1,13 +1,18 @@
 <template>
-  <div class="property" @click="toggleHint">
+  <div class="property">
     <div :class="'svg-elem ' + svgName"></div>
     <div class="property-edit">
-
+      <div :class="['button-more', 'svg-elem', 'arrow-more', {opened: hint}]" @click="toggleHint"></div>
       <div class="text">{{ text }}</div>
-      <hr>
-      <div class="hint" v-show="hint">
-        <slot></slot>
-      </div>
+
+      <transition name="fade">
+        <hr v-show="hint">
+      </transition>
+      <transition name="fade">
+        <div class="hint" v-show="hint">
+          <slot></slot>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -23,7 +28,7 @@ export default {
   },
   methods: {
     toggleHint() {
-      // this.hint = !this.hint
+      this.hint = !this.hint
     }
   },
   props: ['svgName', 'text']
@@ -43,10 +48,30 @@ export default {
   & .property-edit {
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 100%;
     background-color: #FAFAFA;
     border-radius: 12px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+    //.fade-enter-active, .fade-leave-active {
+    //  transition: opacity 2.5s;
+    //}
+
+    & .button-more {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transition: 0.15s;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.opened {
+        transform: rotateZ(180deg);
+      }
+    }
 
     & hr {
       color: gray;
@@ -86,11 +111,11 @@ export default {
     }
 
     &:hover {
-      cursor: pointer;
+      //cursor: pointer;
 
-      .svg-elem {
-        filter: invert(57%) sepia(46%) saturate(4750%) hue-rotate(326deg) brightness(97%) contrast(89%);
-      }
+      //.svg-elem {
+      //  filter: invert(57%) sepia(46%) saturate(4750%) hue-rotate(326deg) brightness(97%) contrast(89%);
+      //}
     }
   }
 

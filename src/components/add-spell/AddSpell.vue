@@ -29,6 +29,7 @@
 <script>
 import LvlEditor from "@/components/add-spell/LvlEditor";
 import PropertyEditorCastTime from "@/components/add-spell/properties/PropertyEditorCastTime";
+
 export default {
   name: "AddSpell",
   components: {PropertyEditorCastTime, LvlEditor},
@@ -45,6 +46,7 @@ export default {
 .add-spell {
   border-radius: 8px;
   width: 1100px;
+  min-height: 400px;
   text-align: left;
   padding: 0.4em 0.8em 0.8em;
   background-color: #F5F5F5;
