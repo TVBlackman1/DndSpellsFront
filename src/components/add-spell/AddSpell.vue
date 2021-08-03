@@ -11,7 +11,9 @@
         </div>
         <div class="properties">
           <div class="paragraph">Свойства</div>
-
+          <div class="container">
+            <property-editor-cast-time />
+          </div>
         </div>
       </div>
       <div class="right">
@@ -26,9 +28,10 @@
 
 <script>
 import LvlEditor from "@/components/add-spell/LvlEditor";
+import PropertyEditorCastTime from "@/components/add-spell/properties/PropertyEditorCastTime";
 export default {
   name: "AddSpell",
-  components: {LvlEditor},
+  components: {PropertyEditorCastTime, LvlEditor},
   data() {
     return {
     }
@@ -85,6 +88,7 @@ export default {
     justify-content: space-between;
 
     & .paragraph {
+      text-align: center;
       font-family: Montserrat-semi-bold, serif;
       font-size: 16px;
     }

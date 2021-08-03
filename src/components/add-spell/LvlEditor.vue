@@ -19,15 +19,10 @@ export default {
     return {
       levels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
       currentLvl: 0,
-      prevListItem: undefined
     }
   },
   methods: {
     setLevelValue(event, newLevel) {
-      event.target.classList.toggle('active')
-      this.prevListItem?.classList.toggle('active')
-      this.prevListItem = event.target
-
       this.currentLvl = newLevel
 
     },
