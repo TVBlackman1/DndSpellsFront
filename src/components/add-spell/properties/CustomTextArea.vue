@@ -30,9 +30,13 @@ export default {
 
 <style scoped lang="scss">
 textarea {
+  font-family: Montserrat-regular, serif;
   border-radius: 6px;
   border-width: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  padding: 0.2em 0.3em;
+  box-sizing: border-box;
+  max-height: 300px;
   font-size: 16px;
   width: 100%;
   resize: none;
