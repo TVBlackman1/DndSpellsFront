@@ -85,24 +85,13 @@ export default {
       font-family: Montserrat-regular, serif;
       font-size: 18px;
       box-sizing: border-box;
-
-      //background: #FAFAFA;
-      //box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-      //border-radius: 12px;
     }
 
     & .hint {
-      //position: absolute;
-      //z-index: 2;
-      //border-radius: 8px;
-      //left: 0;
-      //top: 30px;
       width: 100%;
       overflow-y: auto;
-      max-height: 200px;
-      //background-color: #fff;
-      //-webkit-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
-      //box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
+      height: 400px;
+      max-height: 280px;
       padding: 0.3em 0.6em;
       box-sizing: border-box;
 
