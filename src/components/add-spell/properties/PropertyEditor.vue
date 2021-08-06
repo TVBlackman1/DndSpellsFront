@@ -90,9 +90,9 @@ export default {
     & .hint {
       width: 100%;
       overflow-y: auto;
-      height: 400px;
-      max-height: 280px;
-      padding: 0.3em 0.6em;
+      //height: 400px;
+      max-height: 560px;
+      padding: 0.3em 0.6em 1.3em;
       box-sizing: border-box;
 
       font-family: Montserrat-regular, serif;

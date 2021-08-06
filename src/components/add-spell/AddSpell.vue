@@ -13,6 +13,11 @@
           <div class="paragraph">Свойства</div>
           <div class="container">
             <property-editor-cast-time />
+            <property-editor-duration />
+            <property-editor-cast-time />
+            <property-editor-cast-time />
+            <property-editor-cast-time />
+            <property-editor-cast-time />
           </div>
         </div>
       </div>
@@ -22,17 +27,21 @@
         </div>
       </div>
     </div>
-    <div class="buttons">buttons</div>
+    <div class="buttons">
+      <button>Выйти</button>
+      <button>Сохранить</button>
+    </div>
   </div>
 </template>
 
 <script>
 import LvlEditor from "@/components/add-spell/LvlEditor";
 import PropertyEditorCastTime from "@/components/add-spell/properties/PropertyEditorCastTime";
+import PropertyEditorDuration from "@/components/add-spell/properties/PropertyEditorDuration";
 
 export default {
   name: "AddSpell",
-  components: {PropertyEditorCastTime, LvlEditor},
+  components: {PropertyEditorDuration, PropertyEditorCastTime, LvlEditor},
   data() {
     return {
     }
@@ -44,9 +53,10 @@ export default {
 @import "~@/css/fonts.css";
 
 .add-spell {
+  position: relative;
   border-radius: 8px;
   width: 1100px;
-  min-height: 400px;
+  //min-height: 400px;
   text-align: left;
   padding: 0.4em 0.8em 0.8em;
   background-color: #F5F5F5;
@@ -93,6 +103,37 @@ export default {
       text-align: center;
       font-family: Montserrat-semi-bold, serif;
       font-size: 16px;
+    }
+
+    & .properties {
+      & .container {
+        display: flex;
+        flex-direction: column;
+        & > div {
+          margin-bottom: 11px;
+        }
+      }
+    }
+  }
+
+  & .buttons {
+    //position: absolute;
+    //bottom: 0;
+    //right: 0;
+    //left: 0;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    & button {
+      font-family: Montserrat-regular, serif;
+      border-radius: 8px;
+      border-width: 0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      padding: 0.3em 1.2em;
+      box-sizing: border-box;
+      background-color: #FAFAFA;
+      font-size: 20px;
     }
   }
 }

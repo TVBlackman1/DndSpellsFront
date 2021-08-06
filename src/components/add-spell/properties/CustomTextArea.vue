@@ -7,10 +7,14 @@ import autosize from "autosize/dist/autosize";
 
 export default {
   name: "CustomTextArea",
+  props: {
+    startsWith: String
+  },
+
   data() {
     return {
-      defaultText: "1 реакция, ",
-      text: "1 реакция, "
+      defaultText: this.startsWith,
+      text: this.startsWith
     }
   },
   mounted() {

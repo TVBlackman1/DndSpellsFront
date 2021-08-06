@@ -5,59 +5,59 @@
       <div class="radio-buttons">
         <div class="radiobutton">
           <input type="radio"
-                 name="casttime-1"
+                 name="duration-1"
                  v-model="radioPicked"
-                 value="action"
-                 id="1action">
-          <label for="1action">1 действие</label>
+                 value="instantly"
+                 id="instantly">
+          <label for="instantly">Мгновенно</label>
         </div>
         <div class="radiobutton">
           <input type="radio"
-                 name="casttime-1"
+                 name="duration-1"
                  v-model="radioPicked"
-                 value="reaction"
-                 id="1reaction">
-          <label for="1reaction">1 реакция</label>
+                 value="concentration"
+                 id="concentration">
+          <label for="concentration">Концентрация</label>
         </div>
         <div class="radiobutton">
           <input type="radio"
-                 name="casttime-1"
+                 name="duration-1"
                  v-model="radioPicked"
                  value="time"
-                 id="time">
-          <label for="time">Конкретное время</label>
+                 id="duration-time">
+          <label for="duration-time">Конкретное время</label>
         </div>
       </div>
       <hr>
       <div class="addition">
-        <div class="nothing" v-show="radioPicked==='action'">Ничего нет.</div>
-        <div class="reaction" v-show="radioPicked==='reaction'">
+        <div class="nothing" v-show="radioPicked==='instantly'">Ничего нет.</div>
+        <div class="concentration" v-show="radioPicked==='concentration'">
           <div class="pre-text">Дополните текстом:</div>
           <div class="reaction-input">
-            <custom-text-area starts-with="1 реакция, "/>
+            <custom-text-area starts-with="Концентрация, вплоть до "/>
           </div>
         </div>
         <div class="time" v-show="radioPicked==='time'">
           <div class="pre-text">Выберите время:</div>
           <div class="buttons">
             <div class="form_radio_btn">
-              <input id="radio-1" type="radio" name="time" value="1" checked>
-              <label for="radio-1">1 мин</label>
+              <input id="duration-time-radio-1" type="radio" name="duration-time-1" value="1" checked>
+              <label for="duration-time-radio-1">1 мин</label>
             </div>
 
             <div class="form_radio_btn">
-              <input id="radio-2" type="radio" name="time" value="2">
-              <label for="radio-2">10 мин</label>
+              <input id="duration-time-radio-2" type="radio" name="duration-time-1" value="2">
+              <label for="duration-time-radio-2">10 мин</label>
             </div>
 
             <div class="form_radio_btn">
-              <input id="radio-3" type="radio" name="time" value="3">
-              <label for="radio-3">1 час</label>
+              <input id="duration-time-radio-3" type="radio" name="duration-time-1" value="3">
+              <label for="duration-time-radio-3">1 час</label>
             </div>
 
             <div class="form_radio_btn">
-              <input id="radio-4" type="radio" name="time" value="3">
-              <label for="radio-4">8 часов</label>
+              <input id="duration-time-radio-4" type="radio" name="duration-time-1" value="3">
+              <label for="duration-time-radio-4">8 часов</label>
             </div>
           </div>
           <input type="text" class="custom-time">
@@ -73,11 +73,11 @@ import "autosize"
 import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 
 export default {
-  name: "PropertyEditorCastTime",
+  name: "PropertyEditorDuration",
   data() {
     return {
-      text: "1 действие",
-      svgName: "cast-time",
+      text: "Мгновенно",
+      svgName: "duration",
       radioPicked: ""
     }
   },
@@ -125,7 +125,7 @@ export default {
       font-size: 18px;
     }
 
-    & .reaction {
+    & .concentration {
       height: 60px;
       display: flex;
       flex-direction: column;
