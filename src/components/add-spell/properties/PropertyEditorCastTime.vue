@@ -16,13 +16,16 @@
       </div>
       <hr>
       <div class="addition">
+
         <div class="nothing" v-show="radio.picked===0">Ничего нет.</div>
+
         <div class="reaction" v-show="radio.picked===1">
           <div class="pre-text">Дополните текстом:</div>
           <div class="reaction-input">
             <custom-text-area starts-with="1 реакция, "/>
           </div>
         </div>
+
         <div class="time" v-show="radio.picked===2">
           <div class="pre-text">Выберите время:</div>
           <div class="buttons">
@@ -54,7 +57,6 @@ export default {
     return {
       text: "1 действие",
       svgName: "cast-time",
-      radioPicked: "",
       radio: {
         uuid: uuid.v1(),
         picked: "",

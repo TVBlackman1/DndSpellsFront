@@ -3,61 +3,37 @@
     <div class="hint-content">
       <!--      <div class="title">Время накладывания</div>-->
       <div class="radio-buttons">
-        <div class="radiobutton">
+
+        <div
+            v-for="(elem, index) in radio.list"
+            :key="elem.uuid"
+            class="radiobutton">
           <input type="radio"
-                 name="duration-1"
-                 v-model="radioPicked"
-                 value="instantly"
-                 id="instantly">
-          <label for="instantly">Мгновенно</label>
-        </div>
-        <div class="radiobutton">
-          <input type="radio"
-                 name="duration-1"
-                 v-model="radioPicked"
-                 value="concentration"
-                 id="concentration">
-          <label for="concentration">Концентрация</label>
-        </div>
-        <div class="radiobutton">
-          <input type="radio"
-                 name="duration-1"
-                 v-model="radioPicked"
-                 value="time"
-                 id="duration-time">
-          <label for="duration-time">Конкретное время</label>
+                 :name="radio.uuid"
+                 v-model="radio.picked"
+                 :value="index"
+                 :id="elem.uuid">
+          <label :for="elem.uuid">{{elem.value}}</label>
         </div>
       </div>
       <hr>
       <div class="addition">
-        <div class="nothing" v-show="radioPicked==='instantly'">Ничего нет.</div>
-        <div class="concentration" v-show="radioPicked==='concentration'">
+        <div class="nothing" v-show="radio.picked===0">Ничего нет.</div>
+        <div class="concentration" v-show="radio.picked===1">
           <div class="pre-text">Дополните текстом:</div>
           <div class="reaction-input">
             <custom-text-area starts-with="Концентрация, вплоть до "/>
           </div>
         </div>
-        <div class="time" v-show="radioPicked==='time'">
+        <div class="time" v-show="radio.picked===2">
           <div class="pre-text">Выберите время:</div>
           <div class="buttons">
-            <div class="form_radio_btn">
-              <input id="duration-time-radio-1" type="radio" name="duration-time-1" value="1" checked>
-              <label for="duration-time-radio-1">1 мин</label>
-            </div>
-
-            <div class="form_radio_btn">
-              <input id="duration-time-radio-2" type="radio" name="duration-time-1" value="2">
-              <label for="duration-time-radio-2">10 мин</label>
-            </div>
-
-            <div class="form_radio_btn">
-              <input id="duration-time-radio-3" type="radio" name="duration-time-1" value="3">
-              <label for="duration-time-radio-3">1 час</label>
-            </div>
-
-            <div class="form_radio_btn">
-              <input id="duration-time-radio-4" type="radio" name="duration-time-1" value="3">
-              <label for="duration-time-radio-4">8 часов</label>
+            <div
+                class="form_radio_btn"
+                v-for="(elem, index) in time.list"
+                :key="elem.uuid">
+              <input :id="elem.uuid" type="radio" :name="time.uuid" :value="index" checked>
+              <label :for="elem.uuid">{{ elem.value }}</label>
             </div>
           </div>
           <input type="text" class="custom-time">
@@ -71,6 +47,7 @@
 import PropertyEditor from "@/components/add-spell/properties/PropertyEditor";
 import "autosize"
 import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
+import {uuid} from "vue-uuid";
 
 export default {
   name: "PropertyEditorDuration",
@@ -78,7 +55,24 @@ export default {
     return {
       text: "Мгновенно",
       svgName: "duration",
-      radioPicked: ""
+      radio: {
+        uuid: uuid.v1(),
+        picked: "",
+        list: [
+          {value: '1 действие', uuid: uuid.v1()},
+          {value: '1 реакция', uuid: uuid.v1()},
+          {value: 'Конкретное время', uuid: uuid.v1()},
+        ]
+      },
+      time: {
+        uuid: uuid.v1(),
+        list: [
+          {value: '1 мин', uuid: uuid.v1()},
+          {value: '10 мин', uuid: uuid.v1()},
+          {value: '1 час', uuid: uuid.v1()},
+          {value: '8 часов', uuid: uuid.v1()},
+        ]
+      }
     }
   },
   components: {CustomTextArea, PropertyEditor}
