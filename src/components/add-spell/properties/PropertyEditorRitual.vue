@@ -3,12 +3,12 @@
     <div class="hint-content">
       <div class="radio-buttons">
         <div
-            v-for="(elem, index) in checkboxes.list"
+            v-for="(elem, index) in radio.list"
             :key="elem.uuid"
             class="radiobutton">
-          <input type="checkbox"
+          <input type="radio"
                  :name="elem.uuid"
-                 v-model="checkboxes.picked"
+                 v-model="radio.picked"
                  :value="index"
                  :id="elem.uuid">
           <label :for="elem.uuid">{{ elem.value }}</label>
@@ -16,14 +16,7 @@
       </div>
       <hr>
       <div class="addition">
-        <div class="nothing" v-show="checkboxes.picked.indexOf(2) === -1">Ничего нет.</div>
-
-        <div v-show="checkboxes.picked.indexOf(2) !== -1">
-          <!--          <div class="pre-text">Опишите материалы:</div>-->
-          <!--          <div class="reaction-input">-->
-          <custom-text-area starts-with="Материалы: "/>
-          <!--          </div>-->
-        </div>
+<!--        <div class="nothing">Ничего нет.</div>-->
       </div>
     </div>
   </property-editor>
@@ -34,26 +27,25 @@ import PropertyEditor from "@/components/add-spell/properties/PropertyEditor";
 import "autosize"
 // import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
-import CustomTextArea from "./CustomTextArea";
+// import CustomTextArea from "./CustomTextArea";
 
 export default {
-  name: "PropertyEditorComponents",
+  name: "PropertyEditorRitual",
   data() {
     return {
-      text: "B, C",
-      svgName: "components",
-      checkboxes: {
+      text: "Не ритуал",
+      svgName: "ritual",
+      radio: {
         uuid: uuid.v1(),
-        picked: [],
+        picked: "",
         list: [
-          {value: 'Вербальное', uuid: uuid.v1()},
-          {value: 'Соматическое', uuid: uuid.v1()},
-          {value: 'Материальное', uuid: uuid.v1()},
+          {value: 'Ритуал', uuid: uuid.v1()},
+          {value: 'Не ритуал', uuid: uuid.v1()},
         ]
       },
     }
   },
-  components: {CustomTextArea, PropertyEditor}
+  components: {PropertyEditor}
 }
 </script>
 

@@ -17,7 +17,7 @@
             <property-editor-magic-school />
             <property-editor-distance />
             <property-editor-components />
-            <property-editor-cast-time />
+            <property-editor-ritual />
           </div>
         </div>
       </div>
@@ -41,10 +41,12 @@ import PropertyEditorDuration from "@/components/add-spell/properties/PropertyEd
 import PropertyEditorMagicSchool from "./properties/PropertyEditorMagicSchool";
 import PropertyEditorDistance from "./properties/PropertyEditorDistance";
 import PropertyEditorComponents from "./properties/PropertyEditorComponents";
+import PropertyEditorRitual from "./properties/PropertyEditorRitual";
 
 export default {
   name: "AddSpell",
   components: {
+    PropertyEditorRitual,
     PropertyEditorComponents,
     PropertyEditorDistance,
     PropertyEditorMagicSchool, PropertyEditorDuration, PropertyEditorCastTime, LvlEditor},
