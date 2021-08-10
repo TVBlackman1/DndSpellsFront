@@ -14,8 +14,8 @@
           <div class="container">
             <property-editor-cast-time />
             <property-editor-duration />
-            <property-editor-cast-time />
-            <property-editor-cast-time />
+            <property-editor-magic-school />
+            <property-editor-distance />
             <property-editor-cast-time />
             <property-editor-cast-time />
           </div>
@@ -38,10 +38,14 @@
 import LvlEditor from "@/components/add-spell/LvlEditor";
 import PropertyEditorCastTime from "@/components/add-spell/properties/PropertyEditorCastTime";
 import PropertyEditorDuration from "@/components/add-spell/properties/PropertyEditorDuration";
+import PropertyEditorMagicSchool from "./properties/PropertyEditorMagicSchool";
+import PropertyEditorDistance from "./properties/PropertyEditorDistance";
 
 export default {
   name: "AddSpell",
-  components: {PropertyEditorDuration, PropertyEditorCastTime, LvlEditor},
+  components: {
+    PropertyEditorDistance,
+    PropertyEditorMagicSchool, PropertyEditorDuration, PropertyEditorCastTime, LvlEditor},
   data() {
     return {
     }

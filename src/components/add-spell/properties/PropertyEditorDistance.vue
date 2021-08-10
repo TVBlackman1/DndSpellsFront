@@ -18,20 +18,16 @@
       <hr>
       <div class="addition">
         <div class="nothing" v-show="radio.picked===0">Ничего нет.</div>
-        <div class="concentration" v-show="radio.picked===1">
-          <div class="pre-text">Дополните текстом:</div>
-          <div class="reaction-input">
-            <custom-text-area starts-with="Концентрация, вплоть до "/>
-          </div>
-        </div>
-        <div class="time" v-show="radio.picked===2">
-          <div class="pre-text">Выберите время:</div>
+        <div class="nothing" v-show="radio.picked===1">Ничего нет.</div>
+        <div class="nothing" v-show="radio.picked===2">Ничего нет.</div>
+        <div class="time" v-show="radio.picked===3">
+          <div class="pre-text">Выберите расстояние:</div>
           <div class="buttons">
             <div
                 class="form_radio_btn"
-                v-for="(elem, index) in time.list"
+                v-for="(elem, index) in distance.list"
                 :key="elem.uuid">
-              <input :id="elem.uuid" type="radio" :name="time.uuid" :value="index" checked>
+              <input :id="elem.uuid" type="radio" :name="distance.uuid" :value="index" checked>
               <label :for="elem.uuid">{{ elem.value }}</label>
             </div>
           </div>
@@ -45,36 +41,37 @@
 <script>
 import PropertyEditor from "@/components/add-spell/properties/PropertyEditor";
 import "autosize"
-import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
+// import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
 
 export default {
-  name: "PropertyEditorDuration",
+  name: "PropertyEditorDistance",
   data() {
     return {
-      text: "Мгновенно",
-      svgName: "duration",
+      text: "Касание",
+      svgName: "distance",
       radio: {
         uuid: uuid.v1(),
         picked: "",
         list: [
-          {value: 'Мгновенно', uuid: uuid.v1()},
-          {value: 'Концентрация', uuid: uuid.v1()},
-          {value: 'Конкретное время', uuid: uuid.v1()},
+          {value: 'На себя', uuid: uuid.v1()},
+          {value: 'Касание', uuid: uuid.v1()},
+          {value: 'Особое', uuid: uuid.v1()},
+          {value: 'Конкретное расстояние', uuid: uuid.v1()},
         ]
       },
-      time: {
+      distance: {
         uuid: uuid.v1(),
         list: [
-          {value: '1 мин', uuid: uuid.v1()},
-          {value: '10 мин', uuid: uuid.v1()},
-          {value: '1 час', uuid: uuid.v1()},
-          {value: '8 часов', uuid: uuid.v1()},
+          {value: '30 фут.', uuid: uuid.v1()},
+          {value: '60 фут.', uuid: uuid.v1()},
+          {value: '90 фут.', uuid: uuid.v1()},
+          {value: '120 фут.', uuid: uuid.v1()},
         ]
       }
     }
   },
-  components: {CustomTextArea, PropertyEditor}
+  components: {PropertyEditor}
 }
 </script>
 

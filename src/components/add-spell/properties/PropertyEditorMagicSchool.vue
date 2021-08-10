@@ -3,6 +3,7 @@
     <div class="hint-content">
       <!--      <div class="title">Время накладывания</div>-->
       <div class="radio-buttons">
+
         <div
             v-for="(elem, index) in radio.list"
             :key="elem.uuid"
@@ -15,29 +16,6 @@
           <label :for="elem.uuid">{{elem.value}}</label>
         </div>
       </div>
-      <hr>
-      <div class="addition">
-        <div class="nothing" v-show="radio.picked===0">Ничего нет.</div>
-        <div class="concentration" v-show="radio.picked===1">
-          <div class="pre-text">Дополните текстом:</div>
-          <div class="reaction-input">
-            <custom-text-area starts-with="Концентрация, вплоть до "/>
-          </div>
-        </div>
-        <div class="time" v-show="radio.picked===2">
-          <div class="pre-text">Выберите время:</div>
-          <div class="buttons">
-            <div
-                class="form_radio_btn"
-                v-for="(elem, index) in time.list"
-                :key="elem.uuid">
-              <input :id="elem.uuid" type="radio" :name="time.uuid" :value="index" checked>
-              <label :for="elem.uuid">{{ elem.value }}</label>
-            </div>
-          </div>
-          <input type="text" class="custom-time">
-        </div>
-      </div>
     </div>
   </property-editor>
 </template>
@@ -45,22 +23,27 @@
 <script>
 import PropertyEditor from "@/components/add-spell/properties/PropertyEditor";
 import "autosize"
-import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
+// import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
 
 export default {
-  name: "PropertyEditorDuration",
+  name: "PropertyEditorMagicSchool",
   data() {
     return {
-      text: "Мгновенно",
-      svgName: "duration",
+      text: "Иллюзия",
+      svgName: "magical-school",
       radio: {
         uuid: uuid.v1(),
         picked: "",
         list: [
-          {value: 'Мгновенно', uuid: uuid.v1()},
-          {value: 'Концентрация', uuid: uuid.v1()},
-          {value: 'Конкретное время', uuid: uuid.v1()},
+          {value: 'Воплощение', uuid: uuid.v1()},
+          {value: 'Вызов', uuid: uuid.v1()},
+          {value: 'Иллюзия', uuid: uuid.v1()},
+          {value: 'Некромантия', uuid: uuid.v1()},
+          {value: 'Ограждение', uuid: uuid.v1()},
+          {value: 'Очарование', uuid: uuid.v1()},
+          {value: 'Преобразование', uuid: uuid.v1()},
+          {value: 'Прорицание', uuid: uuid.v1()},
         ]
       },
       time: {
@@ -74,7 +57,7 @@ export default {
       }
     }
   },
-  components: {CustomTextArea, PropertyEditor}
+  components: {PropertyEditor}
 }
 </script>
 
