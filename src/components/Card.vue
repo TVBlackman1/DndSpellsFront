@@ -61,6 +61,7 @@ export default {
 @import "~@/css/fonts.css";
 
 .spell-card {
+  margin: 2em auto;
   //border: 1px solid steelblue;
   border-radius: 8px;
   width: 1100px;

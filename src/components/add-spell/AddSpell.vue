@@ -7,17 +7,17 @@
       <div class="left">
         <div class="lvl">
           <div class="paragraph">Уровень</div>
-          <lvl-editor />
+          <lvl-editor/>
         </div>
         <div class="properties">
           <div class="paragraph">Свойства</div>
           <div class="container">
-            <property-editor-cast-time />
-            <property-editor-duration />
-            <property-editor-magic-school />
-            <property-editor-distance />
-            <property-editor-components />
-            <property-editor-ritual />
+            <property-editor-cast-time/>
+            <property-editor-duration/>
+            <property-editor-magic-school/>
+            <property-editor-distance/>
+            <property-editor-components/>
+            <property-editor-ritual/>
           </div>
         </div>
       </div>
@@ -49,10 +49,10 @@ export default {
     PropertyEditorRitual,
     PropertyEditorComponents,
     PropertyEditorDistance,
-    PropertyEditorMagicSchool, PropertyEditorDuration, PropertyEditorCastTime, LvlEditor},
+    PropertyEditorMagicSchool, PropertyEditorDuration, PropertyEditorCastTime, LvlEditor
+  },
   data() {
-    return {
-    }
+    return {}
   }
 }
 </script>
@@ -61,10 +61,13 @@ export default {
 @import "~@/css/fonts.css";
 
 .add-spell {
+  margin: 2em auto;
   position: relative;
   border-radius: 8px;
   width: 1100px;
-  //min-height: 400px;
+  min-height: 400px;
+  //max-height: 400px;
+  overflow-y: auto;
   text-align: left;
   padding: 0.4em 0.8em 0.8em;
   background-color: #F5F5F5;
@@ -77,6 +80,7 @@ export default {
     & .input-holder {
       font-family: Montserrat-regular, serif;
       font-size: 24px;
+
       & input {
         border-width: 0 0 1px 0;
         background: transparent;
@@ -103,20 +107,27 @@ export default {
   }
 
   & .all-characteristics {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    //flex-direction: row;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3em;
+    //justify-content: space-between;
 
     & .paragraph {
       text-align: center;
       font-family: Montserrat-semi-bold, serif;
       font-size: 16px;
+      margin: 0.8em 0 0.6em
     }
 
     & .properties {
       & .container {
         display: flex;
         flex-direction: column;
+        max-height: 300px;
+        height: 300px;
+        overflow-y: auto;
+
         & > div {
           margin-bottom: 11px;
         }
@@ -133,6 +144,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
     & button {
       font-family: Montserrat-regular, serif;
       border-radius: 8px;
