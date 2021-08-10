@@ -35,6 +35,7 @@ export default {
 <style scoped lang="scss">
 textarea {
   font-family: Montserrat-regular, serif;
+  color: #2c3e50;
   border-radius: 6px;
   border-width: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
