@@ -1,9 +1,9 @@
 <template>
-  <div class="property" @click="bodyOnClick">
+  <div class="property">
     <div :class="'svg-elem ' + svgName"></div>
     <div class="property-edit">
-      <div :class="['button-more', 'svg-elem', 'arrow-more', {opened: hint}]" @click="arrowOnClick"></div>
-      <div class="text">{{ text }}</div>
+      <div :class="['button-more', 'svg-elem', 'arrow-more', {opened: hint}]" @click="toggleHint"></div>
+      <div class="text" @click="toggleHint">{{ text }}</div>
 
       <transition name="fade">
         <hr v-show="hint">
@@ -29,20 +29,6 @@ export default {
   methods: {
     toggleHint() {
       this.hint = !this.hint
-    },
-    arrowOnClick(e) {
-      this.toggleHint()
-      if (e.stopPropagation) {
-        e.stopPropagation();   // W3C model
-      } else {
-        e.cancelBubble = true; // IE model
-      }
-
-    },
-    bodyOnClick() {
-      if(!this.hint) {
-        this.toggleHint()
-      }
     }
   },
   props: ['svgName', 'text']
@@ -99,6 +85,10 @@ export default {
       font-family: Montserrat-regular, serif;
       font-size: 18px;
       box-sizing: border-box;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     & .hint {

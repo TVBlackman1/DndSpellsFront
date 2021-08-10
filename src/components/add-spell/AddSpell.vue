@@ -24,9 +24,13 @@
       <div class="right">
         <div class="description-block">
           <div class="paragraph">Описание</div>
+          <div class="description">
+            <textarea />
+          </div>
         </div>
       </div>
     </div>
+    <hr>
     <div class="buttons">
       <button>Выйти</button>
       <button>Сохранить</button>
@@ -107,9 +111,10 @@ export default {
   }
 
   & .all-characteristics {
+    position: relative;
     display: grid;
     //flex-direction: row;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: max-content 1fr;
     grid-gap: 3em;
     //justify-content: space-between;
 
@@ -121,11 +126,14 @@ export default {
     }
 
     & .properties {
+      //background-color: #e8e8e8;
+      //border-radius: 12px;
       & .container {
+        $height: 240px;
         display: flex;
         flex-direction: column;
-        max-height: 300px;
-        height: 300px;
+        max-height: $height;
+        height: $height;
         overflow-y: auto;
 
         & > div {
@@ -133,6 +141,46 @@ export default {
         }
       }
     }
+
+    & .right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .description-block {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .description {
+      flex: 1;
+      & textarea {
+        resize: none;
+        font-family: Montserrat-regular, serif;
+        color: #2c3e50;
+        border-radius: 6px;
+        border-width: 0;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        padding: 0.2em 0.3em;
+        box-sizing: border-box;
+        font-size: 16px;
+        width: 100%;
+        background-color: #FAFAFA;
+        height: 100%;
+        align-self: stretch;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  & hr {
+    color: gray;
+    border-style: inset;
+    border-width: 0.5px;
+    margin: 1.5em 0.5em 0.5em;
   }
 
   & .buttons {
