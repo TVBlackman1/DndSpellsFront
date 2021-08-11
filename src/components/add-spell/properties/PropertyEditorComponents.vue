@@ -16,12 +16,12 @@
       </div>
       <hr>
       <div class="addition">
-        <div class="nothing" v-show="checkboxes.picked.indexOf(2) === -1">Ничего нет.</div>
+        <div class="nothing" v-show="!hasMaterials">Ничего нет.</div>
 
-        <div v-show="checkboxes.picked.indexOf(2) !== -1">
+        <div v-show="hasMaterials">
           <!--          <div class="pre-text">Опишите материалы:</div>-->
           <!--          <div class="reaction-input">-->
-          <custom-text-area starts-with="Материалы: "/>
+          <custom-text-area starts-with="" ref="materialsTextArea"/>
           <!--          </div>-->
         </div>
       </div>
@@ -53,7 +53,14 @@ export default {
     }
   },
   computed: {
+    hasMaterials() {
+      return this.checkboxes.picked.indexOf(2) !== -1
+    },
     text() {
+      let materialText = ""
+      if(this.$refs.materialsTextArea)
+        materialText = this.$refs.materialsTextArea.text
+
       if(this.checkboxes.picked.length === 0) {
         return "Нет компонентов"
       }
@@ -61,7 +68,12 @@ export default {
       elems.sort()
 
       const abbreviations = elems.map((index) => this.checkboxes.list[index].abbreviation)
-      return abbreviations.join(', ')
+      let ret = abbreviations.join(', ')
+      if(this.hasMaterials) {
+        ret += ' (' + materialText + ')'
+      }
+
+      return ret
     }
   },
   components: {CustomTextArea, PropertyEditor}
