@@ -52,6 +52,7 @@ import PropertyEditor from "@/components/add-spell/properties/PropertyEditor";
 import "autosize"
 import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
+import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
 
 export default {
   name: "PropertyEditorDuration",
@@ -102,6 +103,7 @@ export default {
       return undefined
     }
   },
+  mixins: [PropertyGetterObject],
   components: {CustomTextArea, PropertyEditor}
 }
 </script>

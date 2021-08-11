@@ -6,9 +6,13 @@ function PropertyComponent(componentName) {
 }
 
 PropertyComponent.prototype.text = function(parent) {
-    // return this.refName
     let component = parent.$refs[this.refName]
     return component.text
+}
+
+PropertyComponent.prototype.obj = function(parent) {
+    let component = parent.$refs[this.refName]
+    return component.PropertyGetterObject.obj()
 }
 
 function fromNames(...names) {

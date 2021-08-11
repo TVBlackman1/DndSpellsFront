@@ -35,6 +35,7 @@ import "autosize"
 // import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
 import CustomTextArea from "./CustomTextArea";
+import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
 
 export default {
   name: "PropertyEditorComponents",
@@ -76,6 +77,7 @@ export default {
       return ret
     }
   },
+  mixins: [PropertyGetterObject],
   components: {CustomTextArea, PropertyEditor}
 }
 </script>

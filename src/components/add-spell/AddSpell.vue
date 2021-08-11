@@ -63,10 +63,10 @@ export default {
   },
   methods: {
     getCastTime() {
-      // console.log(this.propertyComponents[0].text(this))
+
       let _this = this
-      this.propertyComponents.forEach(property =>{
-        console.log(property.text(_this))
+      this.propertyComponents.forEach(property => {
+        console.log(property.obj(_this))
       })
     }
   },
