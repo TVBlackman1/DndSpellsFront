@@ -26,6 +26,7 @@ export default {
       hint: false
     }
   },
+  // https://www.youtube.com/watch?v=zjAdO9xDCNs
   methods: {
     toggleHint() {
       this.hint = !this.hint
@@ -43,7 +44,9 @@ export default {
   flex-direction: row;
   //align-items: center;
   position: relative;
-  width: 480px;
+  //width: 480px;
+  align-self: stretch;
+  //flex: 1;
 
   & .property-edit {
     display: flex;
@@ -113,25 +116,5 @@ export default {
   }
 
 }
-
-//.hint {
-//  position: absolute;
-//  z-index: 2;
-//  border-radius: 8px;
-//  left: 0;
-//  top: 30px;
-//  width: 420px;
-//  overflow-y: auto;
-//  max-height: 200px;
-//  background-color: #fff;
-//  -webkit-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
-//  box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
-//  padding: 0.3em 0.6em;
-//  box-sizing: border-box;
-//
-//  font-family: Montserrat-regular, serif;
-//  font-size: 16px;
-//}
-
 
 </style>

@@ -129,9 +129,7 @@ export default {
         color: #2c3e50;
         font-size: 16px;
         font-family: Montserrat-regular, serif;
-
       }
-
     }
 
     & .time {

@@ -11,21 +11,20 @@
         </div>
         <div class="properties">
           <div class="paragraph">Свойства</div>
-          <div class="container">
-            <property-editor-cast-time/>
-            <property-editor-duration/>
-            <property-editor-magic-school/>
-            <property-editor-distance/>
-            <property-editor-components/>
-            <property-editor-ritual/>
+          <div class="container" ref="properties">
+            <component v-for="propertyComponent in propertyComponents"
+                       :is="propertyComponent.name"
+                       :key="propertyComponent.refName"
+                       :ref="propertyComponent.refName"></component>
           </div>
+
         </div>
       </div>
       <div class="right">
         <div class="description-block">
           <div class="paragraph">Описание</div>
           <div class="description">
-            <textarea />
+            <textarea/>
           </div>
         </div>
       </div>
@@ -33,7 +32,7 @@
     <hr>
     <div class="buttons">
       <button>Выйти</button>
-      <button>Сохранить</button>
+      <button @click="getCastTime">Сохранить</button>
     </div>
   </div>
 </template>
@@ -46,17 +45,36 @@ import PropertyEditorMagicSchool from "./properties/PropertyEditorMagicSchool";
 import PropertyEditorDistance from "./properties/PropertyEditorDistance";
 import PropertyEditorComponents from "./properties/PropertyEditorComponents";
 import PropertyEditorRitual from "./properties/PropertyEditorRitual";
+import PropertyComponents from './../../constructors/PropertyComponent'
 
 export default {
   name: "AddSpell",
+  data() {
+    return {
+      propertyComponents: PropertyComponents.fromNames(
+          'property-editor-cast-time',
+          'property-editor-duration',
+          'property-editor-magic-school',
+          'property-editor-distance',
+          'property-editor-components',
+          'property-editor-ritual'
+      )
+    }
+  },
+  methods: {
+    getCastTime() {
+      // console.log(this.propertyComponents[0].text(this))
+      let _this = this
+      this.propertyComponents.forEach(property =>{
+        console.log(property.text(_this))
+      })
+    }
+  },
   components: {
     PropertyEditorRitual,
     PropertyEditorComponents,
     PropertyEditorDistance,
     PropertyEditorMagicSchool, PropertyEditorDuration, PropertyEditorCastTime, LvlEditor
-  },
-  data() {
-    return {}
   }
 }
 </script>
@@ -155,6 +173,7 @@ export default {
 
     & .description {
       flex: 1;
+
       & textarea {
         resize: none;
         font-family: Montserrat-regular, serif;
@@ -169,6 +188,7 @@ export default {
         background-color: #FAFAFA;
         height: 100%;
         align-self: stretch;
+
         &:focus {
           outline: none;
         }
@@ -191,7 +211,7 @@ export default {
     padding: 1em;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 
     & button {
       font-family: Montserrat-regular, serif;
@@ -202,6 +222,16 @@ export default {
       box-sizing: border-box;
       background-color: #FAFAFA;
       font-size: 20px;
+      margin: 0 2em;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #e5e8ec;
+      }
+
+      &:focus {
+        background-color: #bec3c9;
+      }
     }
   }
 }
