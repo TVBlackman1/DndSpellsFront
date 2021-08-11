@@ -31,11 +31,10 @@ export default {
   name: "PropertyEditorMagicSchool",
   data() {
     return {
-      text: "Иллюзия",
       svgName: "magical-school",
       radio: {
         uuid: uuid.v1(),
-        picked: "",
+        picked: 0,
         list: [
           {value: 'Воплощение', uuid: uuid.v1()},
           {value: 'Вызов', uuid: uuid.v1()},
@@ -47,15 +46,13 @@ export default {
           {value: 'Прорицание', uuid: uuid.v1()},
         ]
       },
-      time: {
-        uuid: uuid.v1(),
-        list: [
-          {value: '1 мин', uuid: uuid.v1()},
-          {value: '10 мин', uuid: uuid.v1()},
-          {value: '1 час', uuid: uuid.v1()},
-          {value: '8 часов', uuid: uuid.v1()},
-        ]
-      }
+    }
+  },
+  computed: {
+    text() {
+      let ind = this.radio.picked || 0
+      let elem = this.radio.list[ind]
+      return elem.value
     }
   },
   components: {PropertyEditor}

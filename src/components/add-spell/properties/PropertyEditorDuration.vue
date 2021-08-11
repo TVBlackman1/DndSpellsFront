@@ -22,7 +22,7 @@
         <div class="concentration" v-show="radio.picked===1">
           <div class="pre-text">Дополните текстом:</div>
           <div class="reaction-input">
-            <custom-text-area starts-with="Концентрация, вплоть до "/>
+            <custom-text-area starts-with="Концентрация, вплоть до " ref="concentrationTextArea"/>
           </div>
         </div>
         <div class="time" v-show="radio.picked===2">
@@ -32,7 +32,11 @@
                 class="form_radio_btn"
                 v-for="(elem, index) in time.list"
                 :key="elem.uuid">
-              <input :id="elem.uuid" type="radio" :name="time.uuid" :value="index" checked>
+              <input :id="elem.uuid"
+                     type="radio"
+                     v-model="time.picked"
+                     :name="time.uuid"
+                     :value="index">
               <label :for="elem.uuid">{{ elem.value }}</label>
             </div>
           </div>
@@ -53,11 +57,10 @@ export default {
   name: "PropertyEditorDuration",
   data() {
     return {
-      text: "Мгновенно",
       svgName: "duration",
       radio: {
         uuid: uuid.v1(),
-        picked: "",
+        picked: 0,
         list: [
           {value: 'Мгновенно', uuid: uuid.v1()},
           {value: 'Концентрация', uuid: uuid.v1()},
@@ -66,6 +69,7 @@ export default {
       },
       time: {
         uuid: uuid.v1(),
+        picked: 0,
         list: [
           {value: '1 мин', uuid: uuid.v1()},
           {value: '10 мин', uuid: uuid.v1()},
@@ -73,6 +77,29 @@ export default {
           {value: '8 часов', uuid: uuid.v1()},
         ]
       }
+    }
+  },
+  computed: {
+    text() {
+      let ind = this.radio.picked || 0
+
+      if (ind === 0) {
+        // immediately
+        let elem = this.radio.list[ind]
+        return elem.value
+      }
+      else if(ind === 1) {
+        // concentration
+        return this.$refs.concentrationTextArea.text
+      }
+      else if(ind === 2) {
+        // current time
+        let timeInd = this.time.picked
+        let elem = this.time.list[timeInd]
+        return elem.value
+      }
+
+      return undefined
     }
   },
   components: {CustomTextArea, PropertyEditor}

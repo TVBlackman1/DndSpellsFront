@@ -28,7 +28,11 @@
                 class="form_radio_btn"
                 v-for="(elem, index) in distance.list"
                 :key="elem.uuid">
-              <input :id="elem.uuid" type="radio" :name="distance.uuid" :value="index" checked>
+              <input :id="elem.uuid"
+                     type="radio"
+                     v-model="distance.picked"
+                     :name="distance.uuid"
+                     :value="index">
               <label :for="elem.uuid">{{ elem.value }}</label>
             </div>
           </div>
@@ -49,11 +53,10 @@ export default {
   name: "PropertyEditorDistance",
   data() {
     return {
-      text: "Касание",
       svgName: "distance",
       radio: {
         uuid: uuid.v1(),
-        picked: "",
+        picked: 0,
         list: [
           {value: 'На себя', uuid: uuid.v1()},
           {value: 'Касание', uuid: uuid.v1()},
@@ -63,6 +66,7 @@ export default {
       },
       distance: {
         uuid: uuid.v1(),
+        picked: 0,
         list: [
           {value: '30 фут.', uuid: uuid.v1()},
           {value: '60 фут.', uuid: uuid.v1()},
@@ -70,6 +74,25 @@ export default {
           {value: '120 фут.', uuid: uuid.v1()},
         ]
       }
+    }
+  },
+  computed: {
+    text() {
+      let ind = this.radio.picked || 0
+
+      if (ind < 3) {
+        // some words
+        let elem = this.radio.list[ind]
+        return elem.value
+      }
+      else if(ind === 3) {
+        // current distance
+        let distanceInd = this.distance.picked
+        let elem = this.distance.list[distanceInd]
+        return elem.value.substr(0, elem.value.length-1) + 'ов'
+      }
+
+      return undefined
     }
   },
   components: {PropertyEditor}
