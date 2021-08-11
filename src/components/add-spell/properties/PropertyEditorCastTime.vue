@@ -7,6 +7,7 @@
             :key="elem.uuid"
             class="radiobutton">
           <input type="radio"
+                 class="point"
                  :name="radio.uuid"
                  v-model="radio.picked"
                  :value="index"
@@ -22,7 +23,7 @@
         <div class="reaction" v-show="radio.picked===1">
           <div class="pre-text">Дополните текстом:</div>
           <div class="reaction-input">
-            <custom-text-area starts-with="1 реакция, "/>
+            <custom-text-area starts-with="1 реакция, " ref="reactionTextArea"/>
           </div>
         </div>
 
@@ -33,7 +34,11 @@
                 class="form_radio_btn"
                 v-for="(elem, index) in time.list"
                 :key="elem.uuid">
-              <input :id="elem.uuid" type="radio" :name="time.uuid" :value="index" checked>
+              <input :id="elem.uuid"
+                     type="radio"
+                     :name="time.uuid"
+                     v-model="time.picked"
+                     :value="index">
               <label :for="elem.uuid">{{ elem.value }}</label>
             </div>
 
@@ -55,11 +60,10 @@ export default {
   name: "PropertyEditorCastTime",
   data() {
     return {
-      text: "1 действие",
       svgName: "cast-time",
       radio: {
         uuid: uuid.v1(),
-        picked: "",
+        picked: 0,
         list: [
           {value: '1 действие', uuid: uuid.v1()},
           {value: '1 реакция', uuid: uuid.v1()},
@@ -68,6 +72,7 @@ export default {
       },
       time: {
         uuid: uuid.v1(),
+        picked: 0,
         list: [
           {value: '1 мин', uuid: uuid.v1()},
           {value: '10 мин', uuid: uuid.v1()},
@@ -77,11 +82,36 @@ export default {
       }
     }
   },
+  computed: {
+    text() {
+      let ind = this.radio.picked || 0
+
+      if (ind === 0) {
+        // action
+        let elem = this.radio.list[ind]
+        return elem.value
+      }
+      else if(ind === 1) {
+        // reaction
+        return this.$refs.reactionTextArea.text
+      }
+      else if(ind === 2) {
+        // current time
+        let timeInd = this.time.picked
+        let elem = this.time.list[timeInd]
+        return elem.value
+      }
+
+      return undefined
+    }
+  },
   components: {CustomTextArea, PropertyEditor}
 }
 </script>
 
 <style scoped lang="scss">
+@import "src/css/lists";
+
 .hint-content {
   display: flex;
   flex-direction: column;
@@ -132,7 +162,6 @@ export default {
         font-family: Montserrat-regular, serif;
 
       }
-
     }
 
     & .time {
