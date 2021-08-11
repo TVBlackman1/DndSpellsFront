@@ -40,17 +40,28 @@ export default {
   name: "PropertyEditorComponents",
   data() {
     return {
-      text: "B, C",
       svgName: "components",
       checkboxes: {
         uuid: uuid.v1(),
         picked: [],
         list: [
-          {value: 'Вербальное', uuid: uuid.v1()},
-          {value: 'Соматическое', uuid: uuid.v1()},
-          {value: 'Материальное', uuid: uuid.v1()},
+          {value: 'Вербальное', uuid: uuid.v1(), abbreviation: "В"},
+          {value: 'Соматическое', uuid: uuid.v1(), abbreviation: "С"},
+          {value: 'Материальное', uuid: uuid.v1(), abbreviation: "М"},
         ]
       },
+    }
+  },
+  computed: {
+    text() {
+      if(this.checkboxes.picked.length === 0) {
+        return "Нет компонентов"
+      }
+      const elems = this.checkboxes.picked.slice()
+      elems.sort()
+
+      const abbreviations = elems.map((index) => this.checkboxes.list[index].abbreviation)
+      return abbreviations.join(', ')
     }
   },
   components: {CustomTextArea, PropertyEditor}
