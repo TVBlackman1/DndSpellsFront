@@ -7,6 +7,7 @@
             :key="elem.uuid"
             class="radiobutton">
           <input type="radio"
+                 class="point"
                  :name="elem.uuid"
                  v-model="radio.picked"
                  :value="index"
@@ -50,6 +51,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "src/css/lists";
+
 .hint-content {
   display: flex;
   flex-direction: column;
