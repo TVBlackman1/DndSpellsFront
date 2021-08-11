@@ -15,10 +15,10 @@
           <label :for="elem.uuid">{{ elem.value }}</label>
         </div>
       </div>
-      <hr>
-      <div class="addition">
-<!--        <div class="nothing">Ничего нет.</div>-->
-      </div>
+<!--      <hr>-->
+<!--      <div class="addition">-->
+        <!--        <div class="nothing">Ничего нет.</div>-->
+<!--      </div>-->
     </div>
   </property-editor>
 </template>
@@ -34,16 +34,23 @@ export default {
   name: "PropertyEditorRitual",
   data() {
     return {
-      text: "Не ритуал",
       svgName: "ritual",
       radio: {
         uuid: uuid.v1(),
-        picked: "",
+        picked: 1,
         list: [
           {value: 'Ритуал', uuid: uuid.v1()},
           {value: 'Не ритуал', uuid: uuid.v1()},
         ]
       },
+    }
+  },
+  computed: {
+    text() {
+      let ind = this.radio.picked || 0
+
+      let elem = this.radio.list[ind]
+      return elem.value
     }
   },
   components: {PropertyEditor}
