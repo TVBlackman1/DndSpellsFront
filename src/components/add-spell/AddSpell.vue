@@ -58,7 +58,7 @@ export default {
           'property-editor-distance',
           'property-editor-components',
           'property-editor-ritual'
-      )
+      ),
     }
   },
   methods: {

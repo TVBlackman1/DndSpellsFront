@@ -16,6 +16,7 @@ PropertyComponent.prototype.obj = function(parent) {
 }
 
 function fromNames(...names) {
+    console.log(this)
     return names.map(name => new PropertyComponent(name))
 }
 

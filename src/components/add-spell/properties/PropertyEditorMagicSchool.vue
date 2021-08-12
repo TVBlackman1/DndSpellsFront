@@ -14,7 +14,7 @@
                  v-model="radio.picked"
                  :value="index"
                  :id="elem.uuid">
-          <label :for="elem.uuid">{{elem.value}}</label>
+          <label :for="elem.uuid">{{ elem.value }}</label>
         </div>
       </div>
     </div>
@@ -27,6 +27,7 @@ import "autosize"
 // import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
 import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
+import newSpellActions from '../../../store/modules/new-spell/action-types'
 
 export default {
   name: "PropertyEditorMagicSchool",
@@ -53,7 +54,26 @@ export default {
     text() {
       let ind = this.radio.picked || 0
       let elem = this.radio.list[ind]
+
+      this.$store.dispatch({
+        type: newSpellActions.setLevel,
+        newValue: 3
+      })
+      // console.log(this.$store.state.newSpell.lvl)
+      // this.$store.state.newSpell.commit('set-level', 3)
+      console.log("computed ends")
       return elem.value
+    }
+  },
+  watch: {
+    text(val) {
+      this.$store.dispatch({
+        type: newSpellActions.setProperty,
+        propertyName: 'magicSchool',
+        value: val
+      })
+      console.log(this.$store.state.newSpell.properties)
+      console.log(val, "!!")
     }
   },
   mixins: [PropertyGetterObject],
