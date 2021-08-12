@@ -29,6 +29,7 @@ import "autosize"
 // import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
 import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
+import newSpellActions from "../../../store/modules/new-spell/action-types";
 // import CustomTextArea from "./CustomTextArea";
 
 export default {
@@ -52,6 +53,18 @@ export default {
 
       let elem = this.radio.list[ind]
       return elem.value
+    }
+  },
+  watch: {
+    text(val) {
+      this.$store.dispatch({
+        type: newSpellActions.setProperty,
+        propertyName: 'ritual',
+        value: val,
+        reloadHelper: {
+          radio: this.radio.picked,
+        }
+      })
     }
   },
   mixins: [PropertyGetterObject],

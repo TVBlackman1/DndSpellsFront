@@ -56,6 +56,7 @@ import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import "autosize"
 import {uuid} from 'vue-uuid'
 import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
+import newSpellActions from "../../../store/modules/new-spell/action-types";
 
 export default {
   name: "PropertyEditorCastTime",
@@ -104,6 +105,20 @@ export default {
       }
 
       return undefined
+    }
+  },
+  watch: {
+    text(val) {
+      this.$store.dispatch({
+        type: newSpellActions.setProperty,
+        propertyName: 'castTime',
+        value: val,
+        reloadHelper: {
+          radio: this.radio.picked,
+          currentTime: this.time.picked,
+          reactionText: this.$refs.reactionTextArea.text
+        }
+      })
     }
   },
   components: {CustomTextArea, PropertyEditor},

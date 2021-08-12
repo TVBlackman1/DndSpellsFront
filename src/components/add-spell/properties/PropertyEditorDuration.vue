@@ -53,6 +53,7 @@ import "autosize"
 import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
 import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
+import newSpellActions from "../../../store/modules/new-spell/action-types";
 
 export default {
   name: "PropertyEditorDuration",
@@ -101,6 +102,20 @@ export default {
       }
 
       return undefined
+    }
+  },
+  watch: {
+    text(val) {
+      this.$store.dispatch({
+        type: newSpellActions.setProperty,
+        propertyName: 'duration',
+        value: val,
+        reloadHelper: {
+          radio: this.radio.picked,
+          currentTime: this.time.picked,
+          reactionText: this.$refs.concentrationTextArea.text
+        }
+      })
     }
   },
   mixins: [PropertyGetterObject],

@@ -55,13 +55,6 @@ export default {
       let ind = this.radio.picked || 0
       let elem = this.radio.list[ind]
 
-      this.$store.dispatch({
-        type: newSpellActions.setLevel,
-        newValue: 3
-      })
-      // console.log(this.$store.state.newSpell.lvl)
-      // this.$store.state.newSpell.commit('set-level', 3)
-      console.log("computed ends")
       return elem.value
     }
   },
@@ -70,7 +63,10 @@ export default {
       this.$store.dispatch({
         type: newSpellActions.setProperty,
         propertyName: 'magicSchool',
-        value: val
+        value: val,
+        reloadHelper: {
+          radio: this.radio.picked
+        }
       })
       console.log(this.$store.state.newSpell.properties)
       console.log(val, "!!")

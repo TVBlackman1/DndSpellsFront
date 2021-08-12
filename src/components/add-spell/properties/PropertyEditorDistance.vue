@@ -49,6 +49,7 @@ import "autosize"
 // import CustomTextArea from "@/components/add-spell/properties/CustomTextArea";
 import {uuid} from "vue-uuid";
 import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
+import newSpellActions from "../../../store/modules/new-spell/action-types";
 
 export default {
   name: "PropertyEditorDistance",
@@ -94,6 +95,19 @@ export default {
       }
 
       return undefined
+    }
+  },
+  watch: {
+    text(val) {
+      this.$store.dispatch({
+        type: newSpellActions.setProperty,
+        propertyName: 'distance',
+        value: val,
+        reloadHelper: {
+          radio: this.radio.picked,
+          currentDistanceRadio: this.distance.picked,
+        }
+      })
     }
   },
   mixins: [PropertyGetterObject],

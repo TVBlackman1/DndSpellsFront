@@ -64,10 +64,12 @@ export default {
   methods: {
     getCastTime() {
 
-      let _this = this
-      this.propertyComponents.forEach(property => {
-        console.log(property.obj(_this))
-      })
+      // let _this = this
+      // this.propertyComponents.forEach(property => {
+      //   console.log(property.obj(_this))
+      // })
+
+      console.log(this.$store.state.newSpell)
     }
   },
   components: {

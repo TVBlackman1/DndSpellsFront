@@ -36,6 +36,7 @@ import "autosize"
 import {uuid} from "vue-uuid";
 import CustomTextArea from "./CustomTextArea";
 import PropertyGetterObject from "../../../mixins/PropertyGetterObject";
+import newSpellActions from "../../../store/modules/new-spell/action-types";
 
 export default {
   name: "PropertyEditorComponents",
@@ -75,6 +76,19 @@ export default {
       }
 
       return ret
+    }
+  },
+  watch: {
+    text(val) {
+      this.$store.dispatch({
+        type: newSpellActions.setProperty,
+        propertyName: 'duration',
+        value: val,
+        reloadHelper: {
+          checkboxes: this.checkboxes.picked.slice(),
+          materialsText: this.$refs.materialsTextArea.text
+        }
+      })
     }
   },
   mixins: [PropertyGetterObject],

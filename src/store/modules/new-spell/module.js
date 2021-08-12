@@ -15,8 +15,8 @@ export default {
         [moduleMutations.setName](state, newName) {
             state.name = newName
         },
-        [moduleMutations.setProperty](state, {propertyName, value}) {
-            state.properties[propertyName] = value
+        [moduleMutations.setProperty](state, {propertyName, value, reloadHelper}) {
+            state.properties[propertyName] = {value, reloadHelper}
         },
         [moduleMutations.setDescription](state, newDescription) {
             state.description = newDescription
@@ -29,8 +29,8 @@ export default {
         [moduleActions.setName]({commit}, {newName}) {
             commit(moduleMutations.setName, newName)
         },
-        [moduleActions.setProperty]({commit}, {propertyName, value}) {
-            commit(moduleMutations.setProperty, {propertyName, value})
+        [moduleActions.setProperty]({commit}, {propertyName, value, reloadHelper}) {
+            commit(moduleMutations.setProperty, {propertyName, value, reloadHelper})
         },
         [moduleActions.setDescription]({commit}, {newDescription}) {
             commit(moduleMutations.setDescription, newDescription)

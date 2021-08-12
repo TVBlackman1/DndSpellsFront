@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import newSpellActions from "../../store/modules/new-spell/action-types";
+
 export default {
   name: "LvlEditor",
   data() {
@@ -25,6 +27,10 @@ export default {
     setLevelValue(event, newLevel) {
       this.currentLvl = newLevel
 
+      this.$store.dispatch({
+        type: newSpellActions.setLevel,
+        newValue: newLevel
+      })
     },
   }
 }
