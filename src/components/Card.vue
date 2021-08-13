@@ -88,7 +88,7 @@ export default {
     margin-top: 0.9em;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    //align-items: center;
   }
 
   & .lvl {
@@ -102,7 +102,7 @@ export default {
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    margin-right: 30px;
+    margin-right: 24px;
     margin-left: 12px;
     //transition: 0.15s;
 
