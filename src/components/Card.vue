@@ -114,6 +114,7 @@ export default {
 
   & .properties {
     display: grid;
+    flex: 1;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     grid-column-gap: 15px;

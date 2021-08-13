@@ -39,6 +39,7 @@ export default {
     padding-top: 0.15em;
     font-family: Montserrat-regular, serif;
     font-size: 16px;
+    flex: 1;
   }
 
   &:hover {
