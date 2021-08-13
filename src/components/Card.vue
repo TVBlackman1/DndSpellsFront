@@ -8,16 +8,16 @@
       <div class="properties">
         <property-cast-time />
         <property-magic-school />
-        <property-components />
         <property-duration />
         <property-distance />
+        <property-components />
         <property-ritual />
       </div>
     </div>
 
     <div class="description">
 <!--      <pre>-->
-        {{description}}
+        {{state.description}}
 <!--      </pre>-->
     </div>
     <div class="sources"></div>
@@ -73,10 +73,14 @@ export default {
   margin: 2em auto;
   //border: 1px solid steelblue;
   border-radius: 8px;
-  width: 1100px;
+  width: 880px;
   text-align: left;
   padding: 0.4em 0.8em 0.8em;
-  background-color: #F5F5F5;
+  //background-color: #F5F5F5;
+  //background: linear-gradient(308deg, rgba(215,247,226,1) 0%, rgba(227,247,249,1) 100%);
+  //background: rgb(84,224,255);
+  background: #F5F5F5 linear-gradient(149deg, rgba(84,224,255,0.04) 0%, rgba(0,255,10,0.04) 100%);
+
   -webkit-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
   box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.45);
 
@@ -109,7 +113,8 @@ export default {
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    margin-right: 24px;
+    margin-right: 30px;
+    margin-left: 12px;
     //transition: 0.15s;
 
     &:hover {
@@ -120,8 +125,10 @@ export default {
 
   & .properties {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    grid-column-gap: 15px;
+    grid-row-gap: 5px;
   }
 }
 </style>
