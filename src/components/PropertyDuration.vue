@@ -1,5 +1,5 @@
 <template>
-  <property :text="text" :svg-name="svgName">
+  <property :text="duration" :svg-name="svgName">
     <div class="hint-content">
       <div class="title">Длительность эффекта</div>
       Сколько времени будет действовать заклинание. Если
@@ -13,9 +13,9 @@
 import Property from "@/components/Property";
 export default {
   name: "PropertyDuration",
+  props: ['duration'],
   data() {
     return {
-      text: "Концентрация, вплоть до 10 минут",
       svgName: "duration"
     }
   },

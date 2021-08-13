@@ -1,5 +1,5 @@
 <template>
-  <property :text="text" :svg-name="svgName">
+  <property :text="distance" :svg-name="svgName">
     <div class="hint-content">
       <div class="title">Дистанция</div>
       Это максимальная дистанция, на которую можно использовать заклинание.
@@ -11,9 +11,9 @@
 import Property from "@/components/Property";
 export default {
   name: "PropertyDistance",
+  props: ['distance'],
   data() {
     return {
-      text: "60 футов",
       svgName: "distance"
     }
   },

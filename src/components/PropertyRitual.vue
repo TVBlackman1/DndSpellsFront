@@ -1,5 +1,5 @@
 <template>
-  <property :text="text" :svg-name="svgName">
+  <property :text="ritual" :svg-name="svgName">
     <div class="hint-content">
       <div class="title">Ритуал</div>
       Ритуалы можно применять без траты ячеек заклинания.
@@ -11,9 +11,9 @@
 import Property from "@/components/Property";
 export default {
   name: "PropertyRitual",
+  props: ['ritual'],
   data() {
     return {
-      text: "Не ритуал",
       svgName: "ritual"
     }
   },

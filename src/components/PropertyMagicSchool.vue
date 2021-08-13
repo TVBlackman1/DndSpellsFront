@@ -1,5 +1,5 @@
 <template>
-  <property :text="text" :svg-name="svgName">
+  <property :text="schoolName" :svg-name="svgName">
     <div class="hint-content">
       <div class="title">Школа магии</div>
       Основные школы магии в системе D&D:
@@ -21,9 +21,9 @@
 import Property from "@/components/Property";
 export default {
   name: "PropertyMagicSchool",
+  props: ['schoolName'],
   data() {
     return {
-      text: "Иллюзия",
       svgName: "magical-school"
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <property :text="text" :svg-name="svgName">
+  <property :text="components" :svg-name="svgName">
     <div class="hint-content">
       <div class="title">Компоненты заклинания</div>
       Есть три типа компонентов: вербальные, соматические и материальные.
@@ -11,9 +11,9 @@
 import Property from "@/components/Property";
 export default {
   name: "PropertyComponents",
+  props: ['components'],
   data() {
     return {
-      text: "В, С, М (кусок овечьей шерсти)",
       svgName: "components"
     }
   },

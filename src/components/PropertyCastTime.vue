@@ -1,5 +1,5 @@
 <template>
-  <property :text="text" :svg-name="svgName">
+  <property :text="castTime" :svg-name="svgName">
     <div class="hint-content">
       <div class="title">Время накладывания</div>
       Сколько времени потребуется магу, чтобы наложить заклинание.
@@ -12,9 +12,9 @@ import Property from "@/components/Property";
 
 export default {
   name: "PropertyCastTime",
+  props: ['castTime'],
   data() {
     return {
-      text: "1 действие",
       svgName: "cast-time"
     }
   },
