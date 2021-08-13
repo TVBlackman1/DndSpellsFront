@@ -4,7 +4,8 @@
 <!--    <router-link to="/about">About</router-link>-->
 <!--  </div>-->
 <!--  <router-view/>-->
-  <card />
+  <site-header />
+  <card-container />
   <add-spell />
 </template>
 
@@ -31,9 +32,10 @@
 }
 </style>
 <script>
-import Card from "@/components/Card";
 import AddSpell from "@/components/add-spell/AddSpell";
+import SiteHeader from "./components/header/SiteHeader";
+import CardContainer from "./components/CardContainer";
 export default {
-  components: {AddSpell, Card}
+  components: {CardContainer, SiteHeader, AddSpell}
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="spell-card">
     <div class="name-holder">
-      {{name}}
+      {{state.name}}
     </div>
     <div class="must-have-info">
-      <div class="lvl">1</div>
+      <div class="lvl">{{state.level}}</div>
       <div class="properties">
         <property-cast-time />
         <property-magic-school />
@@ -37,6 +37,15 @@ import PropertyRitual from "@/components/PropertyRitual";
 
 export default {
   name: "Card",
+  props: {
+    state: {
+      name: String,
+      level: Number,
+      magicSchool: String,
+      description: String
+    },
+
+  },
   components: {
     PropertyRitual,
     PropertyDistance, PropertyComponents, PropertyDuration, PropertyCastTime, PropertyMagicSchool},

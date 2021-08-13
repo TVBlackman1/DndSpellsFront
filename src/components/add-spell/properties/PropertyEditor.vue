@@ -102,6 +102,7 @@ export default {
       font-family: Montserrat-regular, serif;
       font-size: 20px;
       box-sizing: border-box;
+      max-width: 440px;
 
       &:hover {
         cursor: pointer;
