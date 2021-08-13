@@ -1,6 +1,5 @@
 .svg-elem {
   $size: 24px;
-  background-size: $size $size;
   background-clip: border-box;
   width: $size;
   height: $size;
@@ -36,4 +35,11 @@
     background: url("~@/assets/svg/expand_more_black_24dp.svg") center no-repeat;
   }
 
+  &.sized-40 {
+    $size: 26px;
+    width: $size;
+    height: $size;
+    background-size: $size $size;
+    margin-right: 12px;
+  }
 }

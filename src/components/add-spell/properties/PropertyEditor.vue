@@ -1,6 +1,6 @@
 <template>
   <div class="property">
-    <div :class="'svg-elem ' + svgName"></div>
+    <div :class="'svg-elem sized-40 preview ' + svgName"></div>
     <div class="property-edit">
       <div :class="['button-more', 'svg-elem', 'arrow-more', {opened: hint}]" @click="toggleHint"></div>
       <div class="text" @click="toggleHint">{{ text }}</div>
@@ -39,6 +39,7 @@ export default {
 <style scoped lang="scss">
 @import "~@/css/svg-styles.scss";
 
+
 .property {
   display: flex;
   flex-direction: row;
@@ -47,6 +48,10 @@ export default {
   //width: 480px;
   align-self: stretch;
   //flex: 1;
+
+  & .preview {
+    margin-top: 2.5px;
+  }
 
   & .property-edit {
     display: flex;
@@ -63,9 +68,15 @@ export default {
 
     & .button-more {
       position: absolute;
-      top: 0;
+      top: 3px;
+      //bottom: 0;
       right: 0;
-      transition: 0.15s;
+
+      //margin-top: auto;
+      //margin-bottom: auto;
+      //text-align: center;
+
+      transition: 0.2s;
 
       &:hover {
         cursor: pointer;
@@ -73,6 +84,9 @@ export default {
 
       &.opened {
         transform: rotateZ(180deg);
+        //& ~ .property-edit {
+        //  background-color: #42b983;
+        //}
       }
     }
 
@@ -84,9 +98,9 @@ export default {
     }
 
     & .text {
-      padding: 0.15em 1.2em;
+      padding: 0.16em 1.2em;
       font-family: Montserrat-regular, serif;
-      font-size: 18px;
+      font-size: 20px;
       box-sizing: border-box;
 
       &:hover {

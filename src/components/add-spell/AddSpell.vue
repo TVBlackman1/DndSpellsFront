@@ -69,7 +69,7 @@ export default {
       //   console.log(property.obj(_this))
       // })
 
-      console.log(this.$store.state.newSpell)
+      // console.log(this.$store.state.newSpell)
     }
   },
   components: {
@@ -149,7 +149,7 @@ export default {
       //background-color: #e8e8e8;
       //border-radius: 12px;
       & .container {
-        $height: 240px;
+        $height: 360px;
         display: flex;
         flex-direction: column;
         max-height: $height;
@@ -157,7 +157,7 @@ export default {
         overflow-y: auto;
 
         & > div {
-          margin-bottom: 11px;
+          margin-bottom: 13px;
         }
       }
     }
@@ -183,9 +183,9 @@ export default {
         border-radius: 6px;
         border-width: 0;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-        padding: 0.2em 0.3em;
+        padding: 0.4em 0.8em;
         box-sizing: border-box;
-        font-size: 16px;
+        font-size: 18px;
         width: 100%;
         background-color: #FAFAFA;
         height: 100%;
